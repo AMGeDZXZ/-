@@ -1,0 +1,190 @@
+# These are supported funding model platforms
+
+github: # Replace with up to 4 GitHub Sponsors-enabled usernames e.g., [user1, user2]
+patreon: # Replace with a single Patreon username
+open_collective: # Replace with a single Open Collective username
+ko_fi: # Replace with a single Ko-fi username
+tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/babel
+community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
+liberapay: # Replace with a single Liberapay username
+issuehunt: # Replace with a single IssueHunt username
+otechie: # Replace with a single Otechie username
+lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
+custom: # Replace with up to 4 custom sponsorship URLs e.g., ['link1', 'lin
+
+
+
+
+
+if text ==  معلومات الكيبورد  then
+if not msg.ControllerBot then 
+return send(msg_chat_id,msg_id, \n* ✧ هذا الامر يخص  ..Controller_Num(2)..  *  ,"md",true)  
+end
+local reply_markup = LuaTele.replyMarkup{
+type =  inline ,
+data = {
+{
+{text =  قناه السورس , url =  t.me/ ..chsource..  }, 
+},
+}
+}
+return send(msg_chat_id,msg_id, [[*
+{ مرحبا بك مطوري سأشرح لك كل شئ في لوحه الاوامر بالتفصيل }
+1• الاحصائيات { لعرض عدد المجموعات، والمشتركين في البوت }
+ 2• تفعيل التواصل{ لتفعيل التواصل عبر البوت خاص بك}
+ 3• تعطيل التواصل{ لتعطيل التواصل عبر البوت خاص بك }
+ 4• قائمه العام { لعرض المحظورين عام في البوت }
+ 5• المطورين { لعرض المطورين في بوتك }
+8• اذاعه { ارسال رساله لجميع الجروبات في بوتك }
+9• اذاعه خاص { ارسال رساله لجميع مشتركين بوتك!}
+10• تعطيل الاشتراك الاجباري { لتعطيل الاشتراك جباري خاص بوتك}
+11• تفعيل الاشتراك الاجباري { لتفعيل الاشتراك الاجباري بوتك }
+12•اذاعه بالتوجيه { ارسال رساله بالتوجيه الي جميع المجموعات }
+13• اذاعه بالتوجيه خاص { ارسال رساله بالتوجيه الي جميع المشتركين }
+14• تفعيل البوت الخدمي { يمكن هاذا امر ان منشئ الكروب يفعل البوت م‌ـــِْن دون حتياجه لمطور البوت }
+15• تعطيل البوت الخدمي { يمك هل خاصيه ان تفعيل البوت اله مطورين البوت فقط }
+16• تنظيف المشتركين { يمكنك ازاله المشتركين الوهمين عبر هل امر }
+17• تنظيف الجروبات { يمكن ازاله المجموعات الوهميه عبر عل امر }
+18• جلب نسخه احتياطيه { لعرض ملف المجموعات بوتك }
+19• تحديث السورس { لتحديث السورس خاص بوتك }
+20• الغاء { للغاء الامر الذي طلبته }
+*]],"md",false, false, false, false, reply_markup)
+endif msg.content.luatele == "messageChatAddMembers" then -- اضافه اشخاص
+print( This is Add Membeers  )
+Redis:incr(Saidi.."Num:Add:Memp"..msg_chat_id..":"..msg.sender_id.user_id) 
+local AddMembrs = Redis:get(Saidi.."Lock:AddMempar"..msg_chat_id) 
+local Lock_Bots = Redis:get(Saidi.."Lock:Bot:kick"..msg_chat_id)
+for k,v in pairs(msg.content.member_user_ids) do
+local Info_User = LuaTele.getUser(v) 
+print(v)
+if v == tonumber(Saidi) then
+local Info_Chats = LuaTele.getSupergroupFullInfo(msg_chat_id)
+local Get_Chat = LuaTele.getChat(msg_chat_id)
+zh = https.request( http://api.telegram.org/bot ..Token.. /getchat?chat_id= ..msg_chat_id..  )
+zx = JSON.decode(zh)
+local N = (Redis:get(Saidi.."Name:Bot") or " صعيدي")
+photo = LuaTele.getUserProfilePhotos(Saidi)
+Redis:sadd(Saidi.."ChekBotAdd",msg_chat_id)
+Redis:set(Saidi.."Status:Id"..msg_chat_id,true) ;Redis:set(Saidi.."Status:Reply"..msg_chat_id,true) ;Redis:set(Saidi.."Status:ReplySudo"..msg_chat_id,true) ;Redis:set(Saidi.."Status:BanId"..msg_chat_id,true) ;Redis:set(Saidi.."Status:SetId"..msg_chat_id,true) 
+local TextBot =  * ╗ مـرحـبــا انا بــوت  ..N.. \n╣ اخـتصـاصـي  ادارة الجـروبــات\n╣ مـن السـب والشـتيمـه والابــاحـه\n╣ لتفعيل البــوت اتبــاع الخـطـوات\n╣❶ ارفع البــوت مـشـرف في مـجـمـوعه\n╣ وارسـل تفعيل في مـجـمـوعه\n╣❷ لو ارت تفعيل ردود السـورس\n╣ اكتب تفعيل ردود السـورس\n╝ مـطـور الـبــوت〘 @ ..UserSudo..  〙\n* 
+local reply_markup = LuaTele.replyMarkup{
+type =  inline ,
+data = {{{text =  𓄼• غادر •𓄹 , data = msg.sender_id.user_id.. /leftgroup@ ..msg_chat_id},{text =  𓄼• تفعيل •𓄹 , data = msg.sender_id.user_id.. /addAdmins@ ..msg_chat_id},},
+{{text = Get_Chat.title, url="https://t.me/"..zx.result.username..""}, },}}
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text =  𓄼• غادر •𓄹 , callback_data=msg.sender_id.user_id.. /leftgroup@ ..msg_chat_id},{text =  𓄼• تفعيل •𓄹 , callback_data = msg.sender_id.user_id.. /Ongrops ..msg_chat_id},},
+{{text = Get_Chat.title, url="https://t.me/"..zx.result.username..""},}}
+local rep = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg.chat_id.."&reply_to_message_id="..rep.."&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption="..URL.escape(TextBot).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+--return LuaTele.sendPhoto(msg.chat_id, 0, photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id, TextBot, "md", true, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup)
+endif text == "نداء" or text == "صيح" then
+local Info_Chats = LuaTele.getSupergroupFullInfo(msg.chat_id)
+local chat_Members = LuaTele.searchChatMembers(msg_chat_id, "*", Info_Chats.member_count).members
+local rand_members = math.random(#chat_Members)
+local member_id = chat_Members[rand_members].member_id.user_id
+local member_name = LuaTele.getUser(chat_Members[rand_members].member_id.user_id).first_name
+local mem_tag = "["..member_name.."](tg://user?id="..member_id..")"
+local JabwaJeka = {"وينك يا برو صديقك يحتاجك 💕.","• يـا قمـري ❤️‍🔥","اخي شلون م تحكي معنا 🤔.","وينك كلبي صديقك يحتاجك 💗.","منورنا يقمر 🌚🤍","• يـا قمـري ❤️‍🔥","لينا ساعه نطرينك اخي 😾."}
+local Saidi = JabwaJeka[math.random(#JabwaJeka)]
+return LuaTele.sendText(msg_chat_id,msg_id,"* "..Saidi.." *\n "..mem_tag.." ","md",true)
+endif text == "@all" or text == "تاك عام" or text == "all" then
+if not msg.Admin then
+return send(msg_chat_id,msg_id, \n*✧ هذا الامر يخص {  ..Controller_Num(7)..  }*  ,"md",true)  
+end
+if ChannelJoinch(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type =  inline ,data = {{{text = Redis:get(Saidi.. Chat:Channel:Join:Name ..msg.chat_id), url =  t.me/ ..Redis:get(Saidi.. Chat:Channel:Join ..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id, *\n✧  عليك الاشتراك في قناة البوت لأستخدام الاوامر* ,"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type =  inline ,data = {{{text = Redis:get(Saidi.. Channel:Join:Name ), url =  t.me/ ..Redis:get(Saidi.. Channel:Join )}, },}}
+return send(msg.chat_id,msg.id, *\n✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر* ,"md",false, false, false, false, reply_markup)
+end
+if Redis:get(Saidi.."lockalllll"..msg_chat_id) == "open" then
+local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 2000)
+x = 0
+tags = 0
+local list = Info_Members.members
+for k, v in pairs(list) do
+local UserInfo = LuaTele.getUser(v.member_id.user_id)
+if x == 20 or x == tags or k == 0 then
+tags = x + 20
+listall = ""
+end
+x = x + 1
+if UserInfo.first_name ~=    then
+listall = listall.." -» ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\nꔹ━━━━━ꔹ𝐒𝐀𝐈𝐃𝐈ꔹ━━━━━ꔹ\n"
+end
+if x == 20 or x == tags or k == 0 then
+send(msg_chat_id,msg_id,listall,"md",true)  
+end
+end
+end
+endif text == "زواج" or text == "رفع زوجتي" or text == "رفع زوجي" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender_id.user_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عوز يتجوز نفسه 😂*","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(Saidi) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك كلبه غير البوت يبنوسخه 😒*","md",true)  
+end
+if Redis:sismember(Saidi..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {"الا تصلح انت تكون متجوزه 😹","المزه متجوزه مسبقا 😒","عذرا لا تصلح للجواز 😢💔","انها متناكه من قبل عزيزي 😅😂","شوفلك كلبه غير دي 😒😂"}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
+else local rd_zwag = {"تم الزواج مبروك 💑🎊","تم الزواج الف مبروك 🎉🎀","زواجنا مبروكة والحمد لله 🙊💗","تم الزواج من المزه الجامده 💋💞","تم الزواج امتاا الدخله 😅😂"}
+if Redis:sismember(Saidi..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(Saidi..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+end
+Redis:sadd(Saidi..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
+end
+end
+if text == "تاك للزوجات" or text == "الزوجات" then
+local zwgat_list = Redis:smembers(Saidi..msg_chat_id.."zwgat:")
+if #zwgat_list == 0 then return LuaTele.sendText(msg_chat_id,msg_id, * ✧ لايوجد زوجات* ,"md",true) 
+end 
+local zwga_list = " ✧ عدد الزوجات : "..#zwgat_list.."\n ✧ الزوجات :\nꔹ━━━━━ꔹ𝐒𝐀𝐈𝐃𝐈ꔹ━━━━━ꔹ\n"
+for k, v in pairs(zwgat_list) do
+local UserInfo = LuaTele.getUser(v)
+if UserInfo and UserInfo.username and UserInfo.username ~= "" then
+zwga_list = zwga_list.."*"..k.." -› *[@"..UserInfo.username.."](tg://user?id="..v..")\n"
+else
+zwga_list = zwga_list.."*"..k.." -›* ["..v.."](tg://user?id="..v..")\n"
+end
+end
+return LuaTele.sendText(msg_chat_id,msg_id,zwga_list,"md",true) 
+endif text == "طلاق" or text == "تنزيل زوجتي" or text == "تنزيل زوجي" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender_id.user_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*احا هو انت كنت اتجوزت نفسك عشان تطلق 😳*","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(Saidi) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*هو احنا كنا اتجوزنا قبل كدا 😹*","md",true)  
+end
+if Redis:sismember(Saidi..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+Redis:srem(Saidi..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
+Redis:sadd(Saidi..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+local rd_tmtlaq = {"تم الطلاق وخربان البيت 😂","تم الطلاق وده الشطان 😹","تم الطلاق بنجاح 😅😂"}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
+else local rd_tlaq = {"لم يتم الجواز من قبل 😹","بايره محدش اتجوزها 😅😂","لم يتم التكاثر من المزه 😂"}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
+end
+end
+if text == "تاك للمطلقات" or text == "المطلقات" then
+local mutlqat_list = Redis:smembers(Saidi..msg_chat_id.."mutlqat:")
+if #mutlqat_list == 0 then 
+return LuaTele.sendText(msg_chat_id,msg_id, * ✧ لايوجد مطلقات* ,"md",true) 
+end 
+local mutlqa_list = " ✧ عدد المطلقات : "..#mutlqat_list.."\n ✧ المطلقات :\nꔹ━━━━━ꔹ𝐒𝐀𝐈𝐃𝐈ꔹ━━━━━ꔹ\n"
+for k, v in pairs(mutlqat_list) do
+local UserInfo = LuaTele.getUser(v)
+if UserInfo and UserInfo.username and UserInfo.username ~= "" then
+mutlqa_list = mutlqa_list.."*"..k.." -› *[@"..UserInfo.username.."](tg://user?id="..v..")\n"
+else
+mutlqa_list = mutlqa_list.."*"..k.." -›* ["..v.."](tg://user?id="..v..")\n"
+end
+end
+return LuaTele.sendText(msg_chat_id,msg_id,mutlqa_list,"md",true) 
+e
